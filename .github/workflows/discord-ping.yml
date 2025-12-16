@@ -38,7 +38,6 @@ jobs:
 
           # 7–8 AM — NO PING
 
-          # 8–9 AM (no VP)
           # 8–9 AM (role-specific ping)
 if [ "$HOUR" = "08" ]; then
   PING_ROLE="<@&1449999738182041630>"
