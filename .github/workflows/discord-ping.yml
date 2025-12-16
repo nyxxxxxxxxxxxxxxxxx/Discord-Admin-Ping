@@ -14,38 +14,21 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           HOUR=$(TZ=America/New_York date +%H)
-          MESSAGE=""
 
-          case "$HOUR" in
-            08)
-              MESSAGE="🌸 **Admin Coverage (8–9 ET)** 🌸
-🛡️ VP on Duty: Dev
-👤 Active Admin: Dreamy"
-              ;;
-            09)
-              MESSAGE="☁️ **Admin Coverage (9–10 ET)** ☁️
-🛡️ VP on Duty: Dev
-👤 Active Admin: Kat"
-              ;;
-            10)
-              MESSAGE="🌈 **Admin Coverage (10–11 ET)** 🌈
-🛡️ VP on Duty: Dev
-👤 Active Admin: Raina"
-              ;;
-            13)
-              MESSAGE="🌼 **Admin Coverage (1–2 ET)** 🌼
-🛡️ VP on Duty: Rae
-🧪 Active Admin (Trial): Yousra"
-              ;;
-            15)
-              MESSAGE="🍃 **Admin Coverage (3–4 ET)** 🍃
-🛡️ VP on Duty: Dev
-🧪 Active Admin (Trial): Rishi"
-              ;;
-          esac
+          if [ "$HOUR" = "08" ]; then
+            MESSAGE="🌸 Admin Coverage (8–9 ET) 🌸 | VP: Dev | Active: Dreamy"
+          elif [ "$HOUR" = "09" ]; then
+            MESSAGE="☁️ Admin Coverage (9–10 ET) ☁️ | VP: Dev | Active: Kat"
+          elif [ "$HOUR" = "10" ]; then
+            MESSAGE="🌈 Admin Coverage (10–11 ET) 🌈 | VP: Dev | Active: Raina"
+          elif [ "$HOUR" = "13" ]; then
+            MESSAGE="🌼 Admin Coverage (1–2 ET) 🌼 | VP: Rae | Trial: Yousra"
+          elif [ "$HOUR" = "15" ]; then
+            MESSAGE="🍃 Admin Coverage (3–4 ET) 🍃 | VP: Dev | Trial: Rishi"
+          else
+            exit 0
+          fi
 
-          if [ -n "$MESSAGE" ]; then
-            curl -H "Content-Type: application/json" \
+          curl -H "Content-Type: application/json" \
             -d "{\"content\":\"$MESSAGE\"}" \
             $DISCORD_WEBHOOK
-          fi
