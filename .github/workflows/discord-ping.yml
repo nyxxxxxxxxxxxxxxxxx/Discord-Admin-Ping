@@ -17,23 +17,27 @@ jobs:
           MESSAGE=""
           PING_ROLE=""
 
-          # 3–4 AM
+          # 3–4 AM (role-specific ping)
           if [ "$HOUR" = "03" ]; then
+          PING_ROLE="<@&1449999277056069706>"
             MESSAGE="Admin Coverage (3–4 ET)\nVP on Duty: Triance\nActive Admin(s): Triance"
           fi
 
-          # 4–5 AM (no VP)
+          # 4–5 AM (role-specific ping)
           if [ "$HOUR" = "04" ]; then
+          PING_ROLE="<@&1450327799956246618>"
             MESSAGE="Admin Coverage (4–5 ET)\nActive Admin(s): Triance, Skits"
           fi
 
-          # 5–6 AM
+          # 5–6 AM (role-specific ping)
           if [ "$HOUR" = "05" ]; then
+          PING_ROLE="<@&1449999597882708089>"
             MESSAGE="Admin Coverage (5–6 ET)\nVP on Duty: Mamushi\nActive Admin(s): Mamushi"
           fi
 
-          # 6–7 AM
+          # 6–7 AM (role-specific ping)
           if [ "$HOUR" = "06" ]; then
+          PING_ROLE="<@&1449999665109143552>"
             MESSAGE="Admin Coverage (6–7 ET)\nVP on Duty: Archy\nActive Admin(s): Archy"
           fi
 
@@ -57,25 +61,29 @@ jobs:
             MESSAGE="Admin Coverage (10–11 ET)\nActive Admin(s): Raina"
           fi
 
-          # 11 AM–12 PM
+          # 11 AM–12 PM (role-specific ping)
           if [ "$HOUR" = "11" ]; then
+          PING_ROLE="<@&1449999973105139813>"
             MESSAGE="Admin Coverage (11–12 ET)\nVP on Duty: Rae\nActive Admin(s): Rae"
           fi
 
           # 12–1 PM — NO PING
 
-          # 1–2 PM (no VP)
+          # 1–2 PM (role-specific ping)
           if [ "$HOUR" = "13" ]; then
+          PING_ROLE="<@&1450000047641985197>"
             MESSAGE="Admin Coverage (1–2 ET)\nActive Admin(s): Rae, Yousra"
           fi
 
-          # 2–3 PM
+          # 2–3 PM (role-specific ping)
           if [ "$HOUR" = "14" ]; then
+          PING_ROLE="<@&1450000122132824135>"
             MESSAGE="Admin Coverage (2–3 ET)\nVP on Duty: Dev\nActive Admin(s): Dev"
           fi
 
-          # 3–4 PM (no VP)
+          # 3–4 PM (role-specific ping)
           if [ "$HOUR" = "15" ]; then
+          PING_ROLE="<@&1450000183763927142>"
             MESSAGE="Admin Coverage (3–4 ET)\nActive Admin(s): Dev, Rishi"
           fi
 
@@ -84,23 +92,26 @@ jobs:
             MESSAGE="Admin Coverage (4–5 ET)\nVP on Duty: Dev\nActive Admin(s): Dev"
           fi
 
-          # 5–6 PM
+          # 5–6 PM (role-specific ping)
           if [ "$HOUR" = "17" ]; then
+          PING_ROLE="<@&1450000237060952176>"
             MESSAGE="Admin Coverage (5–6 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx"
           fi
 
-          # 6–7 PM
+          # 6–7 PM (role-specific ping)
           if [ "$HOUR" = "18" ]; then
+          PING_ROLE="<@&1450000308951580823>"
             MESSAGE="Admin Coverage (6–7 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx, Sky"
           fi
-
+          
           # 7–8 PM
           if [ "$HOUR" = "19" ]; then
             MESSAGE="Admin Coverage (7–8 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx"
           fi
 
-          # 8–9 PM
+          # 8–9 PM (role-specific ping)
           if [ "$HOUR" = "20" ]; then
+          PING_ROLE="<@&1450000414123757608>"
             MESSAGE="Admin Coverage (8–9 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx, Neko"
           fi
 
@@ -109,25 +120,29 @@ jobs:
             MESSAGE="Admin Coverage (9–10 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx"
           fi
 
-          # 10–11 PM (Kitty)
+          # 10–11 PM (role-specific ping)
           if [ "$HOUR" = "22" ]; then
+          PING_ROLE="<@&1450000505911771220>"
             MESSAGE="Admin Coverage (10–11 ET)\nVP on Duty: Nyx\nActive Admin(s): Kitty"
           fi
 
-          # 11 PM–12 AM
+          # 11 PM–12 AM (role-specific ping)
           if [ "$HOUR" = "23" ]; then
+          PING_ROLE="<@&1450000581799317614>"
             MESSAGE="Admin Coverage (11–12 ET)\nVP on Duty: Ace\nActive Admin(s): Ace"
           fi
 
           # 12–1 AM — NO PING
 
-          # 1–2 AM
+          # 1–2 AM (role-specific ping)
           if [ "$HOUR" = "01" ]; then
+          PING_ROLE="<@&1450000639919783986>"
             MESSAGE="Admin Coverage (1–2 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx, Katsu"
           fi
 
-          # 2–3 AM
+          # 2–3 AM (role-specific ping)
           if [ "$HOUR" = "02" ]; then
+          PING_ROLE="<@&1450000712959262841>"
             MESSAGE="Admin Coverage (2–3 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx, Nic"
           fi
 
