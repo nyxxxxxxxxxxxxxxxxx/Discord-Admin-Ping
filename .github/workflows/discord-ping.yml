@@ -134,6 +134,6 @@ jobs:
 
           curl -X POST \
             -H "Content-Type: application/json" \
-            -d "{\"content\":\"$MESSAGE\"}" \
+            -d "{\"content\":\"<@&1450000237060952176>\n$MESSAGE\"}" \
             "$DISCORD_WEBHOOK"
 
