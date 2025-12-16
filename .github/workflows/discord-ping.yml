@@ -45,7 +45,6 @@ if [ "$HOUR" = "08" ]; then
   MESSAGE="Admin Coverage (8–9 ET)\nActive Admin(s): Dreamy"
 fi
 
-
           # 9–10 AM (no VP)
           if [ "$HOUR" = "09" ]; then
             MESSAGE="Admin Coverage (9–10 ET)\nActive Admin(s): Kat"
@@ -138,6 +137,5 @@ fi
           curl -X POST \
             -H "Content-Type: application/json" \
             -d "{\"content\":\"${PING_ROLE:-<@&1450000237060952176>}\n$MESSAGE\"}" \
-
             "$DISCORD_WEBHOOK"
 
