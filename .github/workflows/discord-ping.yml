@@ -40,10 +40,10 @@ jobs:
           # 7–8 AM — NO PING
 
           # 8–9 AM (role-specific ping)
-if [ "$HOUR" = "08" ]; then
-  PING_ROLE="<@&1449999738182041630>"
-  MESSAGE="Admin Coverage (8–9 ET)\nActive Admin(s): Dreamy"
-fi
+          if [ "$HOUR" = "08" ]; then
+          PING_ROLE="<@&1449999738182041630>"
+            MESSAGE="Admin Coverage (8–9 ET)\nActive Admin(s): Dreamy"
+          fi
 
           # 9–10 AM (no VP)
           if [ "$HOUR" = "09" ]; then
