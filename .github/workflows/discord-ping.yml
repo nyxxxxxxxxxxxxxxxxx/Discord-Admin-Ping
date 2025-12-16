@@ -1,4 +1,4 @@
-name: Admin Auto Ping ✨
+name: Admin Hourly Coverage ✨
 
 on:
   schedule:
@@ -9,7 +9,7 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Discord ping
+      - name: Send Discord hourly admin ping
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
@@ -18,24 +18,35 @@ jobs:
 
           case "$HOUR" in
             08)
-              MESSAGE="🌸 **Morning Admin Coverage** 🌸\n🛡️ <@&ROLE_ID> Dev (VP)\n👤 Dreamy"
+              MESSAGE="🌸 **Admin Coverage (8–9 ET)** 🌸
+🛡️ VP on Duty: Dev
+👤 Active Admin: Dreamy"
               ;;
             09)
-              MESSAGE="☁️ **Admin Coverage** ☁️\n🛡️ <@&ROLE_ID> Dev (VP)\n👤 Kat"
+              MESSAGE="☁️ **Admin Coverage (9–10 ET)** ☁️
+🛡️ VP on Duty: Dev
+👤 Active Admin: Kat"
               ;;
             10)
-              MESSAGE="🌈 **Admin Coverage** 🌈\n🛡️ <@&ROLE_ID> Dev (VP)\n👤 Raina"
+              MESSAGE="🌈 **Admin Coverage (10–11 ET)** 🌈
+🛡️ VP on Duty: Dev
+👤 Active Admin: Raina"
               ;;
             13)
-              MESSAGE="🌼 **Admin Coverage** 🌼\n🛡️ <@&ROLE_ID> Rae (VP)\n🧪 Yousra (Trial)"
+              MESSAGE="🌼 **Admin Coverage (1–2 ET)** 🌼
+🛡️ VP on Duty: Rae
+🧪 Active Admin (Trial): Yousra"
               ;;
             15)
-              MESSAGE="🍃 **Admin Coverage** 🍃\n🛡️ <@&ROLE_ID> Dev (VP)\n🧪 Rishi (Trial)"
+              MESSAGE="🍃 **Admin Coverage (3–4 ET)** 🍃
+🛡️ VP on Duty: Dev
+🧪 Active Admin (Trial): Rishi"
+              ;;
+            *)
+              exit 0
               ;;
           esac
 
-          if [ -n "$MESSAGE" ]; then
-            curl -H "Content-Type: application/json" \
-            -d "{\"content\":\"$MESSAGE\"}" \
-            $DISCORD_WEBHOOK
-          fi
+          curl -H "Content-Type: application/json" \
+          -d "{\"content\":\"$MESSAGE\"}" \
+          $DISCORD_WEBHOOK
