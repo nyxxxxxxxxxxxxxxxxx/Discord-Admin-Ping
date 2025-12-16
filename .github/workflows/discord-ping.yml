@@ -45,13 +45,15 @@ jobs:
             MESSAGE="Admin Coverage (8–9 ET)\nActive Admin(s): Dreamy"
           fi
 
-          # 9–10 AM (no VP)
+          # 9–10 AM (role-specific ping)
           if [ "$HOUR" = "09" ]; then
+          PING_ROLE="<@&1449999807853756446>"
             MESSAGE="Admin Coverage (9–10 ET)\nActive Admin(s): Kat"
           fi
 
-          # 10–11 AM (no VP)
+          # 10–11 AM (role-specific ping)
           if [ "$HOUR" = "10" ]; then
+          PING_ROLE="<@&1449999895300804608>"
             MESSAGE="Admin Coverage (10–11 ET)\nActive Admin(s): Raina"
           fi
 
