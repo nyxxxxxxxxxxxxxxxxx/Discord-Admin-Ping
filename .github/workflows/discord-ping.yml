@@ -1,4 +1,4 @@
-name: Admin Hourly Coverage ✨
+name: Admin Auto Ping ✨
 
 on:
   schedule:
@@ -9,7 +9,7 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Send Discord hourly admin ping
+      - name: Send Discord ping
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
@@ -42,11 +42,10 @@ jobs:
 🛡️ VP on Duty: Dev
 🧪 Active Admin (Trial): Rishi"
               ;;
-            *)
-              exit 0
-              ;;
           esac
 
-          curl -H "Content-Type: application/json" \
-          -d "{\"content\":\"$MESSAGE\"}" \
-          $DISCORD_WEBHOOK
+          if [ -n "$MESSAGE" ]; then
+            curl -H "Content-Type: application/json" \
+            -d "{\"content\":\"$MESSAGE\"}" \
+            $DISCORD_WEBHOOK
+          fi
