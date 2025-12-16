@@ -14,31 +14,121 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           HOUR=$(TZ=America/New_York date +%H)
-
           MESSAGE=""
 
+          # 3–4 AM
+          if [ "$HOUR" = "03" ]; then
+            MESSAGE="Admin Coverage (3–4 ET)\nVP on Duty: Triance\nActive Admin(s): Triance"
+          fi
+
+          # 4–5 AM (no VP)
+          if [ "$HOUR" = "04" ]; then
+            MESSAGE="Admin Coverage (4–5 ET)\nActive Admin(s): Triance, Skits"
+          fi
+
+          # 5–6 AM
+          if [ "$HOUR" = "05" ]; then
+            MESSAGE="Admin Coverage (5–6 ET)\nVP on Duty: Mamushi\nActive Admin(s): Mamushi"
+          fi
+
+          # 6–7 AM
+          if [ "$HOUR" = "06" ]; then
+            MESSAGE="Admin Coverage (6–7 ET)\nVP on Duty: Archy\nActive Admin(s): Archy"
+          fi
+
+          # 7–8 AM — NO PING
+
+          # 8–9 AM (no VP)
           if [ "$HOUR" = "08" ]; then
-            MESSAGE="Admin Coverage 8-9 ET | VP: Dev | Active: Dreamy"
+            MESSAGE="Admin Coverage (8–9 ET)\nActive Admin(s): Dreamy"
           fi
 
+          # 9–10 AM (no VP)
           if [ "$HOUR" = "09" ]; then
-            MESSAGE="Admin Coverage 9-10 ET | VP: Dev | Active: Kat"
+            MESSAGE="Admin Coverage (9–10 ET)\nActive Admin(s): Kat"
           fi
 
+          # 10–11 AM (no VP)
           if [ "$HOUR" = "10" ]; then
-            MESSAGE="Admin Coverage 10-11 ET | VP: Dev | Active: Raina"
+            MESSAGE="Admin Coverage (10–11 ET)\nActive Admin(s): Raina"
           fi
 
+          # 11 AM–12 PM
+          if [ "$HOUR" = "11" ]; then
+            MESSAGE="Admin Coverage (11–12 ET)\nVP on Duty: Rae\nActive Admin(s): Rae"
+          fi
+
+          # 12–1 PM — NO PING
+
+          # 1–2 PM (no VP)
           if [ "$HOUR" = "13" ]; then
-            MESSAGE="Admin Coverage 1-2 ET | VP: Rae | Trial: Yousra"
+            MESSAGE="Admin Coverage (1–2 ET)\nActive Admin(s): Rae, Yousra"
           fi
 
+          # 2–3 PM
+          if [ "$HOUR" = "14" ]; then
+            MESSAGE="Admin Coverage (2–3 ET)\nVP on Duty: Dev\nActive Admin(s): Dev"
+          fi
+
+          # 3–4 PM (no VP)
           if [ "$HOUR" = "15" ]; then
-            MESSAGE="Admin Coverage 3-4 ET | VP: Dev | Trial: Rishi"
+            MESSAGE="Admin Coverage (3–4 ET)\nActive Admin(s): Dev, Rishi"
+          fi
+
+          # 4–5 PM
+          if [ "$HOUR" = "16" ]; then
+            MESSAGE="Admin Coverage (4–5 ET)\nVP on Duty: Dev\nActive Admin(s): Dev"
+          fi
+
+          # 5–6 PM
+          if [ "$HOUR" = "17" ]; then
+            MESSAGE="Admin Coverage (5–6 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx"
+          fi
+
+          # 6–7 PM
+          if [ "$HOUR" = "18" ]; then
+            MESSAGE="Admin Coverage (6–7 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx, Sky"
+          fi
+
+          # 7–8 PM
+          if [ "$HOUR" = "19" ]; then
+            MESSAGE="Admin Coverage (7–8 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx"
+          fi
+
+          # 8–9 PM
+          if [ "$HOUR" = "20" ]; then
+            MESSAGE="Admin Coverage (8–9 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx, Neko"
+          fi
+
+          # 9–10 PM
+          if [ "$HOUR" = "21" ]; then
+            MESSAGE="Admin Coverage (9–10 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx"
+          fi
+
+          # 10–11 PM (Kitty)
+          if [ "$HOUR" = "22" ]; then
+            MESSAGE="Admin Coverage (10–11 ET)\nVP on Duty: Nyx\nActive Admin(s): Kitty"
+          fi
+
+          # 11 PM–12 AM
+          if [ "$HOUR" = "23" ]; then
+            MESSAGE="Admin Coverage (11–12 ET)\nVP on Duty: Ace\nActive Admin(s): Ace"
+          fi
+
+          # 12–1 AM — NO PING
+
+          # 1–2 AM
+          if [ "$HOUR" = "01" ]; then
+            MESSAGE="Admin Coverage (1–2 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx, Katsu"
+          fi
+
+          # 2–3 AM
+          if [ "$HOUR" = "02" ]; then
+            MESSAGE="Admin Coverage (2–3 ET)\nVP on Duty: Nyx\nActive Admin(s): Nyx, Nic"
           fi
 
           if [ -z "$MESSAGE" ]; then
-            echo "No message this hour"
+            echo "No ping this hour"
             exit 0
           fi
 
@@ -46,3 +136,4 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"content\":\"$MESSAGE\"}" \
             "$DISCORD_WEBHOOK"
+
