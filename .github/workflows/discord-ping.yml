@@ -1,4 +1,4 @@
-name: Admin Auto Ping ✨
+name: Admin Auto Ping
 
 on:
   schedule:
@@ -13,34 +13,36 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          set +e
-
           HOUR=$(TZ=America/New_York date +%H)
+
           MESSAGE=""
 
           if [ "$HOUR" = "08" ]; then
-            MESSAGE="🌸 Admin Coverage (8–9 ET) | VP: Dev | Active: Dreamy"
-          elif [ "$HOUR" = "09" ]; then
-            MESSAGE="☁️ Admin Coverage (9–10 ET) | VP: Dev | Active: Kat"
-          elif [ "$HOUR" = "10" ]; then
-            MESSAGE="🌈 Admin Coverage (10–11 ET) | VP: Dev | Active: Raina"
-          elif [ "$HOUR" = "13" ]; then
-            MESSAGE="🌼 Admin Coverage (1–2 ET) | VP: Rae | Trial: Yousra"
-          elif [ "$HOUR" = "15" ]; then
-            MESSAGE="🍃 Admin Coverage (3–4 ET) | VP: Dev | Trial: Rishi"
-          else
+            MESSAGE="Admin Coverage 8-9 ET | VP: Dev | Active: Dreamy"
+          fi
+
+          if [ "$HOUR" = "09" ]; then
+            MESSAGE="Admin Coverage 9-10 ET | VP: Dev | Active: Kat"
+          fi
+
+          if [ "$HOUR" = "10" ]; then
+            MESSAGE="Admin Coverage 10-11 ET | VP: Dev | Active: Raina"
+          fi
+
+          if [ "$HOUR" = "13" ]; then
+            MESSAGE="Admin Coverage 1-2 ET | VP: Rae | Trial: Yousra"
+          fi
+
+          if [ "$HOUR" = "15" ]; then
+            MESSAGE="Admin Coverage 3-4 ET | VP: Dev | Trial: Rishi"
+          fi
+
+          if [ -z "$MESSAGE" ]; then
             echo "No message this hour"
             exit 0
           fi
 
-          if [ -z "$DISCORD_WEBHOOK" ]; then
-            echo "Webhook missing"
-            exit 0
-          fi
-
-          curl -s -X POST \
+          curl -X POST \
             -H "Content-Type: application/json" \
             -d "{\"content\":\"$MESSAGE\"}" \
             "$DISCORD_WEBHOOK"
-
-          echo "Ping sent"
