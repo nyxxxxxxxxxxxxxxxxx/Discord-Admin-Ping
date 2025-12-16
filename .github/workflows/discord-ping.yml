@@ -14,7 +14,8 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           HOUR=$(TZ=America/New_York date +%H)
-          MESSAGE=""
+MESSAGE=""
+PING_ROLE=""
 
           # 3–4 AM
           if [ "$HOUR" = "03" ]; then
