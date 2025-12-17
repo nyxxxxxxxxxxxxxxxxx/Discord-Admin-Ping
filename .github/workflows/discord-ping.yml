@@ -2,7 +2,7 @@ name: Admin Auto Ping
 
 on:
   schedule:
-    - cron: '0 * * * *'   # runs every hour
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -10,145 +10,136 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TZ: America/New_York
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
     steps:
       - name: Send Discord Ping
         run: |
           HOUR=$(date +%H)
-
           PING_ROLE=""
           MESSAGE=""
 
-        
+          # 1–2 AM
+          if [ "$HOUR" = "01" ]; then
+            PING_ROLE="<@&1450000639919783986>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 1–2 ET\n👑 VP: -Nyx-\n🛡️ Katsu"
+          fi
 
+          # 2–3 AM
+          if [ "$HOUR" = "02" ]; then
+            PING_ROLE="<@&1450000712959262841>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 2–3 ET\n👑 VP: -Nyx-\n🛡️ ZaddyNic"
+          fi
 
-
-          # 3–4 AM (role-specific ping)
+          # 3–4 AM
           if [ "$HOUR" = "03" ]; then
-          PING_ROLE="<@&1449999277056069706>"
+            PING_ROLE="<@&1449999277056069706>"
             MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: Triance\n🛡️ Triance"
           fi
 
-          # 4–5 AM (role-specific ping)
+          # 4–5 AM
           if [ "$HOUR" = "04" ]; then
-          PING_ROLE="<@&1450327799956246618>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: Triance\n🛡️ Skits"
+            PING_ROLE="<@&1450327799956246618>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 4–5 ET\n👑 VP: Triance\n🛡️ Skits"
           fi
 
-          # 5–6 AM (role-specific ping)
+          # 5–6 AM
           if [ "$HOUR" = "05" ]; then
-          PING_ROLE="<@&1449999597882708089>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: Mamushi\n🛡️ Mamushi"
+            PING_ROLE="<@&1449999597882708089>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 5–6 ET\n👑 VP: Mamushi\n🛡️ Mamushi"
           fi
 
-          # 6–7 AM (role-specific ping)
+          # 6–7 AM
           if [ "$HOUR" = "06" ]; then
-          PING_ROLE="<@&1449999665109143552>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: FcUeKd\n🛡️ FcUeKd"
+            PING_ROLE="<@&1449999665109143552>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 6–7 ET\n👑 VP: FcUeKd\n🛡️ FcUeKd"
           fi
 
           # 7–8 AM — NO PING
 
-          # 8–9 AM (role-specific ping)
+          # 8–9 AM
           if [ "$HOUR" = "08" ]; then
-          PING_ROLE="<@&1449999738182041630>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: Ghosty_Kay\n🛡️ DreamStalker"
+            PING_ROLE="<@&1449999738182041630>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 8–9 ET\n👑 VP: Ghosty_Kay\n🛡️ DreamStalker"
           fi
 
-          # 9–10 AM (role-specific ping)
+          # 9–10 AM
           if [ "$HOUR" = "09" ]; then
-          PING_ROLE="<@&1449999807853756446>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: Ghosty_Kay\n🛡️ Cocoa"
+            PING_ROLE="<@&1449999807853756446>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 9–10 ET\n👑 VP: Ghosty_Kay\n🛡️ Cocoa"
           fi
 
-          # 10–11 AM (role-specific ping)
+          # 10–11 AM
           if [ "$HOUR" = "10" ]; then
-          PING_ROLE="<@&1449999895300804608>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: Ghosty_Kay\n🛡️ Rainaa"
+            PING_ROLE="<@&1449999895300804608>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 10–11 ET\n👑 VP: Ghosty_Kay\n🛡️ Rainaa"
           fi
 
-          # 11 AM–12 PM (role-specific ping)
+          # 11 AM–12 PM
           if [ "$HOUR" = "11" ]; then
-          PING_ROLE="<@&1449999973105139813>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: SinfullyRae\n🛡️ SinfullyRae"
+            PING_ROLE="<@&1449999973105139813>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 11–12 ET\n👑 VP: SinfullyRae\n🛡️ SinfullyRae"
           fi
 
           # 12–1 PM — NO PING
 
-          # 1–2 PM (role-specific ping)
+          # 1–2 PM
           if [ "$HOUR" = "13" ]; then
-          PING_ROLE="<@&1450000047641985197>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: SinfullyRae\n🛡️ Yousra"
+            PING_ROLE="<@&1450000047641985197>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 1–2 ET\n👑 VP: SinfullyRae\n🛡️ Yousra"
           fi
 
-          # 2–3 PM (role-specific ping)
+          # 2–3 PM
           if [ "$HOUR" = "14" ]; then
-          PING_ROLE="<@&1450000122132824135>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: Ghosty_Kay\n🛡️ Ghosty_Kay"
+            PING_ROLE="<@&1450000122132824135>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 2–3 ET\n👑 VP: Ghosty_Kay\n🛡️ Ghosty_Kay"
           fi
 
-          # 3–4 PM (role-specific ping)
+          # 3–4 PM
           if [ "$HOUR" = "15" ]; then
-          PING_ROLE="<@&1450000183763927142>"
+            PING_ROLE="<@&1450000183763927142>"
             MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: Ghosty_Kay\n🛡️ Rishi"
           fi
 
           # 4–5 PM — NO PING
-          
-          # 5–6 PM (role-specific ping)
+
+          # 5–6 PM
           if [ "$HOUR" = "17" ]; then
-          PING_ROLE="<@&1450000237060952176>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: -Nyx-\n🛡️ -Nyx-"
+            PING_ROLE="<@&1450000237060952176>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 5–6 ET\n👑 VP: -Nyx-\n🛡️ -Nyx-"
           fi
 
-          # 6–7 PM (role-specific ping)
+          # 6–7 PM
           if [ "$HOUR" = "18" ]; then
-          PING_ROLE="<@&1450000308951580823>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: -Nyx-\n🛡️ SkyDaSweetyPie"
+            PING_ROLE="<@&1450000308951580823>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 6–7 ET\n👑 VP: -Nyx-\n🛡️ SkyDaSweetyPie"
           fi
-          
+
           # 7–8 PM
           if [ "$HOUR" = "19" ]; then
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: -Nyx-\n🛡️ -Nyx-"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 7–8 ET\n👑 VP: -Nyx-\n🛡️ -Nyx-"
           fi
 
-          # 8–9 PM (role-specific ping)
+          # 8–9 PM
           if [ "$HOUR" = "20" ]; then
-          PING_ROLE="<@&1450000414123757608>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: -Nyx-\n🛡️ N3k0Ch4nllilllllillli"
+            PING_ROLE="<@&1450000414123757608>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 8–9 ET\n👑 VP: -Nyx-\n🛡️ N3k0Ch4nllilllllillli"
           fi
 
           # 9–10 PM
           if [ "$HOUR" = "21" ]; then
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: -Nyx-\n🛡️ -Nyx-"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 9–10 ET\n👑 VP: -Nyx-\n🛡️ -Nyx-"
           fi
 
-          # 10–11 PM (role-specific ping)
+          # 10–11 PM
           if [ "$HOUR" = "22" ]; then
-          PING_ROLE="<@&1450000505911771220>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: -Nyx-\n🛡️ ABG"
+            PING_ROLE="<@&1450000505911771220>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 10–11 ET\n👑 VP: -Nyx-\n🛡️ ABG"
           fi
 
-          # 11 PM–12 AM (role-specific ping)
+          # 11 PM–12 AM
           if [ "$HOUR" = "23" ]; then
-          PING_ROLE="<@&1450000581799317614>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: Patrick\n🛡️ Patrick"
-
-          fi
-
-          # 12–1 AM — NO PING
-
-          # 1–2 AM (role-specific ping)
-          if [ "$HOUR" = "01" ]; then
-          PING_ROLE="<@&1450000639919783986>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: -Nyx-\n🛡️ Katsu"
-
-          fi
-
-          # 2–3 AM (role-specific ping)
-          if [ "$HOUR" = "02" ]; then
-          PING_ROLE="<@&1450000712959262841>"
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: -Nyx-\n🛡️ ZaddyNic"
-
+            PING_ROLE="<@&1450000581799317614>"
+            MESSAGE="🌸 Admin On Duty 🌸\n🕒 11–12 ET\n👑 VP: Patrick\n🛡️ Patrick"
           fi
 
           if [ -z "$MESSAGE" ]; then
@@ -158,6 +149,6 @@ jobs:
 
           curl -X POST \
             -H "Content-Type: application/json" \
-            -d "{\"content\":\"${PING_ROLE:-<@&1450000237060952176>}\n$MESSAGE\"}" \
+            -d "{\"content\":\"${PING_ROLE}\n$MESSAGE\"}" \
             "$DISCORD_WEBHOOK"
 
