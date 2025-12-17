@@ -8,7 +8,7 @@ on:
 jobs:
   ping:
     runs-on: ubuntu-latest
-        env:
+    env:
       TZ: America/New_York
     steps:
       - name: Send Discord ping
