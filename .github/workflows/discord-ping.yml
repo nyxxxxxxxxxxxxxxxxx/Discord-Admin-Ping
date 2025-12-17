@@ -2,7 +2,7 @@ name: Admin Auto Ping
 
 on:
   schedule:
-   - cron: "0 * * * *"
+    - cron: '0 * * * *'   # runs every hour
   workflow_dispatch:
 
 jobs:
@@ -11,13 +11,12 @@ jobs:
     env:
       TZ: America/New_York
     steps:
-      - name: Send Discord ping
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: Send Discord Ping
         run: |
-          HOUR=$(TZ=America/New_York date +%H)
-          MESSAGE=""
+          HOUR=$(date +%H)
+
           PING_ROLE=""
+          MESSAGE=""
 
           # 3–4 AM (role-specific ping)
           if [ "$HOUR" = "03" ]; then
