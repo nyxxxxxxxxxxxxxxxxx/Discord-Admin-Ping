@@ -18,6 +18,10 @@ jobs:
           PING_ROLE=""
           MESSAGE=""
 
+        
+
+
+
           # 3–4 AM (role-specific ping)
           if [ "$HOUR" = "03" ]; then
           PING_ROLE="<@&1449999277056069706>"
