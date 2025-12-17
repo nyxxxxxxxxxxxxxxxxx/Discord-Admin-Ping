@@ -11,10 +11,16 @@ jobs:
     env:
       TZ: America/New_York
       DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+
     steps:
       - name: Send Discord Ping
         run: |
+          echo "Current time:"
+          date
+
           HOUR=$(date +%H)
+          echo "ET hour is $HOUR"
+
           PING_ROLE=""
           MESSAGE=""
 
@@ -54,8 +60,6 @@ jobs:
             MESSAGE="🌸 Admin On Duty 🌸\n🕒 6–7 ET\n👑 VP: FcUeKd\n🛡️ FcUeKd"
           fi
 
-          # 7–8 AM — NO PING
-
           # 8–9 AM
           if [ "$HOUR" = "08" ]; then
             PING_ROLE="<@&1449999738182041630>"
@@ -74,13 +78,11 @@ jobs:
             MESSAGE="🌸 Admin On Duty 🌸\n🕒 10–11 ET\n👑 VP: Ghosty_Kay\n🛡️ Rainaa"
           fi
 
-          # 11 AM–12 PM
+          # 11–12 PM
           if [ "$HOUR" = "11" ]; then
             PING_ROLE="<@&1449999973105139813>"
             MESSAGE="🌸 Admin On Duty 🌸\n🕒 11–12 ET\n👑 VP: SinfullyRae\n🛡️ SinfullyRae"
           fi
-
-          # 12–1 PM — NO PING
 
           # 1–2 PM
           if [ "$HOUR" = "13" ]; then
@@ -100,8 +102,6 @@ jobs:
             MESSAGE="🌸 Admin On Duty 🌸\n🕒 3–4 ET\n👑 VP: Ghosty_Kay\n🛡️ Rishi"
           fi
 
-          # 4–5 PM — NO PING
-
           # 5–6 PM
           if [ "$HOUR" = "17" ]; then
             PING_ROLE="<@&1450000237060952176>"
@@ -114,20 +114,10 @@ jobs:
             MESSAGE="🌸 Admin On Duty 🌸\n🕒 6–7 ET\n👑 VP: -Nyx-\n🛡️ SkyDaSweetyPie"
           fi
 
-          # 7–8 PM
-          if [ "$HOUR" = "19" ]; then
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 7–8 ET\n👑 VP: -Nyx-\n🛡️ -Nyx-"
-          fi
-
           # 8–9 PM
           if [ "$HOUR" = "20" ]; then
             PING_ROLE="<@&1450000414123757608>"
             MESSAGE="🌸 Admin On Duty 🌸\n🕒 8–9 ET\n👑 VP: -Nyx-\n🛡️ N3k0Ch4nllilllllillli"
-          fi
-
-          # 9–10 PM
-          if [ "$HOUR" = "21" ]; then
-            MESSAGE="🌸 Admin On Duty 🌸\n🕒 9–10 ET\n👑 VP: -Nyx-\n🛡️ -Nyx-"
           fi
 
           # 10–11 PM
@@ -136,7 +126,7 @@ jobs:
             MESSAGE="🌸 Admin On Duty 🌸\n🕒 10–11 ET\n👑 VP: -Nyx-\n🛡️ ABG"
           fi
 
-          # 11 PM–12 AM
+          # 11–12 AM
           if [ "$HOUR" = "23" ]; then
             PING_ROLE="<@&1450000581799317614>"
             MESSAGE="🌸 Admin On Duty 🌸\n🕒 11–12 ET\n👑 VP: Patrick\n🛡️ Patrick"
@@ -151,4 +141,3 @@ jobs:
             -H "Content-Type: application/json" \
             -d "{\"content\":\"${PING_ROLE}\n$MESSAGE\"}" \
             "$DISCORD_WEBHOOK"
-
